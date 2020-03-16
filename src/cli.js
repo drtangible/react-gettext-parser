@@ -28,6 +28,14 @@ const args = yargs
   .option('trim-newlines', {
     type: 'boolean',
     description: 'Trims extracted strings from new-lines',
+  })
+  .option('disable-line-numbers', {
+    type: 'boolean',
+    description: 'Disables line numbers in POT reference comments',
+  })
+  .option('no-wrap', {
+    type: 'boolean',
+    description: 'Does not break long strings into several lines',
   }).argv
 
 const filesGlob = args._
@@ -37,6 +45,8 @@ let opts = {
   trim: args.trim,
   trimLines: args['trim-lines'],
   trimNewlines: args['trim-newlines'],
+  disableLineNumbers: args['disable-line-numbers'],
+  noWrap: args['no-wrap'],
 }
 
 if (args.config) {
